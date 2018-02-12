@@ -4,6 +4,8 @@ This terraform module creates an integration with Slack `incoming-webhook` to po
 
 CodePipeline events are handled by a lambda function. Code for the lambda function lives on its own github (see https://github.com/felimartina/aws-CodePipeline-slack-integration) and is included in this repo as a `submodule` so that terraform will clone it along with this module while still keeping and maintaining both, the function code and the terraform module, separated.
 
+## Example Messages
+
 ![alt text](https://github.com/felimartina/aws-codepipeline-slack-integration/blob/master/example-messages.png "Example messages")
 
 **IMPORTANT NOTE:** Unfortunately this function depends on `npm` to be installed in the machine doing the provisioning (aka running `terraform apply`). This is to avoid publishing the `node_modules` folder to the lambda function repo. If anyone has a better approach I would love to hear it.
@@ -14,7 +16,6 @@ I have not tested it yet, but this dependency on `npm` will likely prevent this 
 
 ## Variables (aka params)
 
-- `CODEPIPELINE_ARN`: You must provide the arn of your CodePipeline pipeline.
 - `PIPELINE_NAME`: Name of the CodePipeline pipeline. This is used for the CloudWatch rule.
 - `APP_NAME`: Give the stack a friendly name. Name will prefix created resources (lambda, role, and policy).
 - `SLACK_WEBHOOK_URL`: Url given by slack when creating an `incoming-webhook` in your slack account. For details see [Slack Documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).
