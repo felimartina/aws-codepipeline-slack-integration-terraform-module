@@ -1,0 +1,15 @@
+# Compiled files
+*.tfstate
+*.tfstate.backup
+
+# secrets files
+terraform.tfvars
+
+# Module directory
+.terraform/
+
+# Temp folders
+tmp
+
+# NPM packages
+node_modules
