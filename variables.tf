@@ -2,8 +2,9 @@ variable "APP_NAME" {
   description = "Lambda function name."
 }
 
-variable "PIPELINE_NAME" {
-  description = "CodePipeline name."
+variable "PIPELINE_NAMES" {
+  description = "CodePipeline names"
+  type = "list"
 }
 
 variable "SLACK_WEBHOOK_URL" {
