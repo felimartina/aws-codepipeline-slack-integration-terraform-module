@@ -16,7 +16,7 @@ I have not tested it yet, but this dependency on `npm` will likely prevent this 
 
 ## Variables (aka params)
 
-- `PIPELINE_NAME`: Name of the CodePipeline pipeline. This is used for the CloudWatch rule.
+- `PIPELINE_NAMES`: List of CodePipeline pipeline names. This is used for the CloudWatch rule.
 - `APP_NAME`: Give the stack a friendly name. Name will prefix created resources (lambda, role, and policy).
 - `SLACK_WEBHOOK_URL`: Url given by slack when creating an `incoming-webhook` in your slack account. For details see [Slack Documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).
 - `SLACK_CHANNEL`: Slack channel where you want lambda function to post the message.

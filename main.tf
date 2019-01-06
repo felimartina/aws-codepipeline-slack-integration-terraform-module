@@ -66,7 +66,7 @@ resource "aws_iam_role_policy" "lambda_role_policy" {
         "codepipeline:ListActionTypes",
         "codepipeline:ListPipelines"
       ],
-      "Resource" : "arn:aws:codepipeline:*:*:${var.PIPELINE_NAME}"
+      "Resource" : ${jsonencode(formatlist("arn:aws:codepipeline:*:*:%s", var.PIPELINE_NAMES))}
     }
   ]
 }
@@ -103,14 +103,12 @@ resource "aws_lambda_alias" "lambda_alias" {
 # Cloudwatch event rule
 resource "aws_cloudwatch_event_rule" "pipeline_state_update" {
   name        = "${var.APP_NAME}-slack-integration-pipeline-updated"
-  description = "Capture state changes in pipeline '${var.PIPELINE_NAME}'"
+  description = "Capture state changes in pipelines '${join(", ", var.PIPELINE_NAMES)}'"
 
   event_pattern = <<PATTERN
 {
   "detail": {
-    "pipeline": [
-      "${var.PIPELINE_NAME}"
-    ]
+    "pipeline": ${jsonencode(var.PIPELINE_NAMES)}
   },
   "detail-type": [
     "CodePipeline Pipeline Execution State Change"
