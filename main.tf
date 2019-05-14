@@ -80,7 +80,7 @@ resource "aws_lambda_function" "lambda" {
   function_name    = "${var.APP_NAME}-slack-integration-lambda"
   role             = "${aws_iam_role.lambda_role.arn}"
   handler          = "handler.handle"
-  runtime          = "nodejs6.10"
+  runtime          = "nodejs8.10"
   timeout          = "${var.LAMBDA_TIMEOUT}"
   memory_size      = "${var.LAMBDA_MEMORY_SIZE}"
 
