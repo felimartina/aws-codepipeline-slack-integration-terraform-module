@@ -4,7 +4,7 @@ variable "APP_NAME" {
 
 variable "PIPELINE_NAMES" {
   description = "CodePipeline names"
-  type = "list"
+  type        = list(string)
 }
 
 variable "SLACK_WEBHOOK_URL" {
@@ -27,3 +27,4 @@ variable "LAMBDA_TIMEOUT" {
 variable "LAMBDA_MEMORY_SIZE" {
   default = "128"
 }
+
