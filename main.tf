@@ -83,7 +83,7 @@ EOF
       function_name    = "${var.APP_NAME}-slack-integration-lambda"
       role             = aws_iam_role.lambda_role.arn
       handler          = "handler.handle"
-      runtime          = "nodejs8.10"
+      runtime          = "nodejs12.x"
       timeout          = var.LAMBDA_TIMEOUT
       memory_size      = var.LAMBDA_MEMORY_SIZE
 
