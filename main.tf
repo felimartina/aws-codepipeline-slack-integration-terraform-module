@@ -1,8 +1,7 @@
-# This HACK installs NPM packages on every run so we get lambda function ready to be published
 resource "null_resource" "pull_and_install_github_repo" {
-  triggers = {
-    force_run = uuid()
-  }
+  #triggers = {
+  #  force_run = uuid()
+  #}
   provisioner "local-exec" {
     command = "cd ${path.module}/aws-codepipeline-slack-integration && npm install -production"
   }
